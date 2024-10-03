@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sac.Backend.Login.API.props" />
+</Project>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Sac.Backend.Login.API.props" />
+</Project>
