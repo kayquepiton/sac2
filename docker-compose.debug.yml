@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  cabackendtestapi:
+    image: ca_backend_test_1
+    build:
+      context: .
+      dockerfile: src/Ca.Backend.Test.API/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 5116:5116
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+      - ./src:/app  # Montar o código-fonte para facilitar a depuração
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: tic2023
+      MYSQL_DATABASE: Ca_Backend_Test
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
